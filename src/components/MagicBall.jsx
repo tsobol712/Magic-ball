@@ -44,6 +44,32 @@ function vibrate(pattern) {
   if (navigator.vibrate) navigator.vibrate(pattern); // no-op on iOS Safari — platform limitation
 }
 
+// ============================================================
+// SHAKE DETECTION
+// On iPhone (iOS 13+), reading motion sensors requires the user to grant
+// permission, and Safari only allows asking for that permission in direct
+// response to a tap/click — it can't be requested silently on load. So we
+// ask on the very first tap of the ball. If the person denies it (or is on
+// an iOS version that doesn't support the sensor at all), the app simply
+// stays tap-only — nothing else breaks.
+// ============================================================
+const SHAKE_THRESHOLD = 16; // m/s² of acceleration change — tuned to need a real shake, not a bump
+const SHAKE_COOLDOWN_MS = 1200;
+
+function needsIOSMotionPermission() {
+  return typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function';
+}
+
+async function ensureMotionPermission() {
+  if (!needsIOSMotionPermission()) return true; // Android / older iOS — no prompt needed
+  try {
+    const result = await DeviceMotionEvent.requestPermission();
+    return result === 'granted';
+  } catch {
+    return false; // user denied, or API unavailable — fall back to tap-only
+  }
+}
+
 const measureCanvas = document.createElement('canvas');
 const measureCtx = measureCanvas.getContext('2d');
 
@@ -110,6 +136,11 @@ export default function MagicBall() {
   const [topPercent, setTopPercent] = useState(50);
   const [widthPx, setWidthPx] = useState(0);
 
+  const motionRequestedRef = useRef(false);
+  const lastAccelRef = useRef({ x: 0, y: 0, z: 0 });
+  const lastShakeTimeRef = useRef(0);
+  const revealRef = useRef(() => {});
+
   const reveal = useCallback(() => {
     if (busy) return;
     setBusy(true);
@@ -134,8 +165,49 @@ export default function MagicBall() {
     }, 600);
   }, [busy]);
 
+  // keep a stable reference to the latest reveal() for the devicemotion
+  // listener below, which is only attached once
+  revealRef.current = reveal;
+
+  const handleMotion = useCallback((event) => {
+    const now = Date.now();
+    if (now - lastShakeTimeRef.current < SHAKE_COOLDOWN_MS) return;
+
+    const accel = event.accelerationIncludingGravity || event.acceleration;
+    if (!accel) return;
+
+    const last = lastAccelRef.current;
+    const delta =
+      Math.abs((accel.x || 0) - last.x) +
+      Math.abs((accel.y || 0) - last.y) +
+      Math.abs((accel.z || 0) - last.z);
+
+    lastAccelRef.current = { x: accel.x || 0, y: accel.y || 0, z: accel.z || 0 };
+
+    if (delta > SHAKE_THRESHOLD) {
+      lastShakeTimeRef.current = now;
+      revealRef.current();
+    }
+  }, []);
+
+  const handleFirstInteraction = useCallback(async () => {
+    if (motionRequestedRef.current) return;
+    motionRequestedRef.current = true;
+    const granted = await ensureMotionPermission();
+    if (granted) {
+      window.addEventListener('devicemotion', handleMotion);
+    }
+    // if denied or unsupported — silently stay tap-only, no error shown
+  }, [handleMotion]);
+
   return (
-    <div className="ball-stage" onClick={reveal}>
+    <div
+      className="ball-stage"
+      onClick={() => {
+        handleFirstInteraction();
+        reveal();
+      }}
+    >
       <img ref={ballRef} src={ballImg} alt="Magic ball" className={`ball-img ${shaking ? 'shaking' : ''}`} />
 
       <div className={`glow-fill ${active ? 'glow-fill--active' : ''}`} />

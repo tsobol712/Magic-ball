@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Splash from './components/Splash.jsx';
 import MagicBall from './components/MagicBall.jsx';
 import Stars from './components/Stars.jsx';
+import Disclaimer from './components/Disclaimer.jsx';
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -27,6 +28,7 @@ export default function App() {
             then shake or tap the ball.
           </p>
           <MagicBall />
+          <Disclaimer />
         </main>
       )}
 
