@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import splashImg from '../assets/splash.jpg';
 
 const MIN_DISPLAY_MS = 1500;
@@ -11,6 +11,7 @@ const MIN_DISPLAY_MS = 1500;
 export default function Splash({ isAppReady, onDone }) {
   const [minTimeElapsed, setMinTimeElapsed] = useState(false);
   const [fadingOut, setFadingOut] = useState(false);
+  const doneTriggeredRef = useRef(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setMinTimeElapsed(true), MIN_DISPLAY_MS);
@@ -18,13 +19,17 @@ export default function Splash({ isAppReady, onDone }) {
   }, []);
 
   useEffect(() => {
-    if (minTimeElapsed && isAppReady && !fadingOut) {
+    // doneTriggeredRef (not fadingOut state) guards re-entry, so this effect
+    // doesn't depend on the state it sets — otherwise the state update would
+    // re-run this same effect and its cleanup would cancel the timer below
+    // before it ever fires.
+    if (minTimeElapsed && isAppReady && !doneTriggeredRef.current) {
+      doneTriggeredRef.current = true;
       setFadingOut(true);
-      // let the fade-out CSS transition finish before unmounting
       const timer = setTimeout(onDone, 400);
       return () => clearTimeout(timer);
     }
-  }, [minTimeElapsed, isAppReady, fadingOut, onDone]);
+  }, [minTimeElapsed, isAppReady, onDone]);
 
   return (
     <div className={`splash ${fadingOut ? 'splash--fading' : ''}`}>

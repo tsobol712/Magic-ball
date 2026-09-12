@@ -13,6 +13,16 @@ const NOT_YET_IMPLEMENTED = new Set([
   'still for 2 seconds',
 ]);
 
+function isMultiStepScript(phrase) {
+  // Some rows in the source spreadsheet aren't single displayable answers —
+  // they're multi-step quest scripts (conditional YES/NO branches, timed
+  // reveal sequences) with literal "<br>" tags and author notes baked into
+  // the "Phrase" column. Showing these as-is would leak raw markup and
+  // Russian production notes to the end user. Excluded until they get
+  // dedicated step-by-step UI (see test report — Known Issues).
+  return phrase.includes('<br>');
+}
+
 function timeInRange(nowMinutes, startMinutes, endMinutes) {
   if (startMinutes <= endMinutes) {
     return nowMinutes >= startMinutes && nowMinutes <= endMinutes;
@@ -63,8 +73,10 @@ function isConditionActiveNow(whenToUse, now) {
  * with double weight as per the spec).
  */
 export function pickResponse(now = new Date()) {
-  const pool = responses.filter((r) => isConditionActiveNow(r.whenToUse, now));
-  const candidates = pool.length > 0 ? pool : responses.filter((r) => r.whenToUse === 'anytime');
+  const pool = responses
+    .filter((r) => !isMultiStepScript(r.phrase))
+    .filter((r) => isConditionActiveNow(r.whenToUse, now));
+  const candidates = pool.length > 0 ? pool : responses.filter((r) => r.whenToUse === 'anytime' && !isMultiStepScript(r.phrase));
 
   const totalWeight = candidates.reduce((sum, r) => sum + r.weight, 0);
   let roll = Math.random() * totalWeight;
