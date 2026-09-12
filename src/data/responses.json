@@ -1,0 +1,2550 @@
+[
+  {
+    "phrase": "You'll know by this time tomorrow.",
+    "category": "Time",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You'll know in X hours.",
+    "category": "Time",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": "X = random value from 3 to 72 hours"
+  },
+  {
+    "phrase": "Give it X hours.",
+    "category": "Time",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": "X = random value from 3 to 72 hours"
+  },
+  {
+    "phrase": "Check again tomorrow at 8:17 PM.",
+    "category": "Time",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You'll have your answer before breakfast.",
+    "category": "Time",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Not today. Probably tomorrow.",
+    "category": "Time",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Wait exactly X hours. Don't ask why.",
+    "category": "Time",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": "X = random value from 3 to 72 hours"
+  },
+  {
+    "phrase": "The answer will find you in X hours.",
+    "category": "Time",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": "X = random value from 3 to 72 hours"
+  },
+  {
+    "phrase": "Take the third book from the left. Open page 127. Read the first sentence. That's your answer.",
+    "category": "Mini Quests",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Pick a book without looking. Page 42. First word.",
+    "category": "Mini Quests",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Flip a coin. Heads = yes. Tails = absolutely not.",
+    "category": "Mini Quests",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": "user action = coin flip; heads = yes; tails = absolutely not"
+  },
+  {
+    "phrase": "Open the nearest book. Page 203.",
+    "category": "Mini Quests",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Go to your bookshelf. Count 7 books from the left. Open it. Page 18.",
+    "category": "Mini Quests",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look around you. Find something red.<br><br>После нажатия/нового shake:<br><br>Is there something red?<br><br>Две кнопки:<br><br>YES | NO<br><br>Если YES:<br><br>There you go. That's your sign.<br><br>Если NO:<br><br>No red? No answer. Try again later.",
+    "category": "Interactive Quest",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": "2-step interaction: find red object → YES/NO"
+  },
+  {
+    "phrase": "YES.<br><br>через 400 ms:<br><br>Wait.<br><br>через 500 ms:<br><br>No.<br><br>ещё через 700 ms:<br><br>Actually...<br><br>и:<br><br>Let's not.",
+    "category": "Interactive",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": "show in sequence; delays = 400 ms, 500 ms, 700 ms"
+  },
+  {
+    "phrase": "Flip a coin. Heads = yes. Tails = absolutely not.",
+    "category": "Mini Quests",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": "user action = coin flip; heads = yes; tails = absolutely not"
+  },
+  {
+    "phrase": "The youngest person chooses.",
+    "category": "Party",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": "party action = youngest person chooses"
+  },
+  {
+    "phrase": "Ask the person on your left. Whatever they say, do the opposite.",
+    "category": "Mini Quests",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": "party action = ask person on left; do the opposite"
+  },
+  {
+    "phrase": "Close your eyes. Pick a number from 1–10.",
+    "category": "Mini Quests",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": "user chooses a number from 1 to 10"
+  },
+  {
+    "phrase": "Stand up. Turn around. Ask again.",
+    "category": "Mini Quests",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": "user action = stand up → turn around → ask again"
+  },
+  {
+    "phrase": "Text the last person you messaged. Ask them to choose A or B.",
+    "category": "Mini Quests",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": "user action = text last person; ask for A or B"
+  },
+  {
+    "phrase": "Wow. You really need me to answer that?",
+    "category": "Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "No fucking way.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "That's probably a terrible idea.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Hell yes.",
+    "category": "Positive",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You already know the answer.",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You knew before you asked.",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Deep down, you know.",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You don't need me for this one.",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You came here for validation, didn't you?",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You already made up your mind.",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You just wanted someone else to blame.",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You know exactly what to do.",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Trust yourself. Unfortunately.",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Your gut knows. Your brain is catching up.",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You already decided. This is just paperwork.",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You don't need advice. You need courage.",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You don't need an answer. You need permission.",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Ask yourself. I'm busy.",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Have you tried thinking about it?",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "That's between you and your consequences.",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "I'm a magic ball, not your therapist.",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Bold of you to ask me.",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Interesting question. Questionable judgment.",
+    "category": "You already know",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look out the window. You'll know.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look around. The answer is literally there.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Check the nearest red sign.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look at the first thing you see.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look outside.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look at the sky.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Check your surroundings.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look behind you.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look at the clock.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Find something blue. That's your answer.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Find something red. Trust it.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Read the nearest sign.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Pick the first book you see.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Open a random book. Page 302.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look at the third object on your left.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Ask the next person you see.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Check the first notification on your phone.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look at your shoes. Yes, seriously.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Close your eyes. Point somewhere. That's your answer.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "The answer is hiding in plain sight.",
+    "category": "Look around",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Sleep on it.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Seriously. Sleep on it.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Go to bed. Try again tomorrow.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Ask me again after you've slept.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You need sleep, not answers.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Don't decide tonight.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Tomorrow-you will have opinions.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Give it 24 hours.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Wait until morning.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Sleep first. Panic later.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Put the decision down and walk away.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Take a break.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Do absolutely nothing for 24 hours.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Let tomorrow deal with it.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Future You can handle this.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Ask again when you're less dramatic.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Come back after one good night's sleep.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Your brain needs a reboot.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Close the app. Go to bed.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "This feels like a tomorrow problem.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Sleep on it. Preferably for eight hours.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Sleep on it. Your current brain is clearly off duty.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Go to bed. You're making this worse.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Ask again tomorrow. Maybe you'll have learned something.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Wait 24 hours before doing anything stupid.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Congratulations. You've invented a problem for Tomorrow You.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Give it a night. Dramatic decisions look better in daylight.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Your pillow has better advice than I do tonight.",
+    "category": "Sleep on it",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "I'm not saying.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Nope. Figure it out yourself.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "I could tell you. But where's the fun in that?",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "I'm keeping that one to myself.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Nice try.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Absolutely not.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You wish.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Not today.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "I'm not getting involved.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "That's above my pay grade.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "That's between you and the universe.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Ask the universe.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "The universe has left you on read.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Even I don't want to touch this one.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "I'm staying out of it.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "I'm choosing peace.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "I'm choosing not to answer that.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "I have concerns.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "I have several concerns.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Let's pretend you never asked.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Moving on...",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Next question, please.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "We're not discussing this.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "I refuse to be responsible for this decision.",
+    "category": "I'm not saying",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Find something red. That's your sign.",
+    "category": "Red Sign",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "See a red sign? There you go.",
+    "category": "Red Sign",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "The next red thing you see is your answer.",
+    "category": "Red Sign",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look for a red sign.",
+    "category": "Red Sign",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Your answer is hiding behind something red.",
+    "category": "Red Sign",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "If you see red, take it as a yes.",
+    "category": "Red Sign",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "If the first thing you see is red, go for it.",
+    "category": "Red Sign",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Find the nearest red object. Congratulations. It has spoken.",
+    "category": "Red Sign",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look outside. Find something red. Don't ask why.",
+    "category": "Red Sign",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "The universe owes you a red sign.",
+    "category": "Red Sign",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Drink some water.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Take a walk.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Clean your room.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Make a coffee.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Eat something.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Put your phone down.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Go outside.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Call a friend.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Take a shower.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Do literally anything else for five minutes.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Stretch.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Breathe.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Touch grass.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Stop overthinking.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Start over.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Try again.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Flip a coin. I'm off duty.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": "user action = coin flip; heads = yes; tails = absolutely not"
+  },
+  {
+    "phrase": "Ask your best friend.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Ask someone who knows you.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Write it down.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Make a pros and cons list.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Do the opposite of what you're currently doing.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Take the pressure off.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Don't make it complicated.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You are overthinking this.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You are definitely overthinking this.",
+    "category": "Action",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "That's a terrible idea. Next.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Absolutely not. Have some self-respect.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You can't be serious.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Oh, honey. No.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "I have seen better plans.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "That's certainly one way to ruin your day.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Bold choice.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Questionable. Very questionable.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "I wouldn't.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "I really wouldn't.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Do you hear yourself?",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Think again. Please.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Maybe don't.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You deserve better than this idea.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "That's going straight into the bad decisions folder.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Let's not make this a character-development moment.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "This has “regret” written all over it.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Future You is already annoyed.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Your future self just sighed.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "I'm concerned about the confidence behind this question.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "That's not a plan. That's a cry for chaos.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "You came to the wrong ball.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Even the universe needs a minute.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "I'm going to pretend I didn't hear that.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Absolutely fucking not.",
+    "category": "Angry Humor",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look out the window. You'll know.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look out the window. The answer is there.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Go look out the window. Seriously.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look outside. You'll understand.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look outside. I can't do everything for you.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look out the window. Your answer is waiting.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Check the window. Don't ask why.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look outside. Trust me.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look outside. You'll see the sign.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Go look outside. I'll wait.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look out the window. Then come back.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "The answer is outside. Obviously.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look outside. The universe left you a clue.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look out the window. This is your quest now.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Go check the window. Yes, I'm serious.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look outside. Maybe the universe has better plans.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look out the window. Something there knows.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Your answer is somewhere outside. Good luck.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look outside. I refuse to elaborate.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look out the window. You'll either understand or get distracted.",
+    "category": "Look outside",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Stand up. The answer isn't coming to you.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Go outside. Yes, humans still do that.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Touch grass. You know what I mean.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Drink some water. You're welcome.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Go look in the mirror. This feels important.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Check your pockets. Maybe your answer is in there. Probably not.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Open the nearest drawer. I have a feeling. Don't question it.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Pick up the nearest object. Congratulations, it's now part of the prophecy.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Find something blue. Apparently this is your problem now.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Find something red. The universe has standards.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Look behind you. If nothing happens, blame me.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Walk to the nearest window. Adventure awaits. Sort of.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Find a book. Open a random page. Pretend this was intentional.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Pick a random object. Give it a name. Don't ask questions.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Go to another room. Your answer has apparently relocated.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Change seats. Maybe the problem is the chair.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Turn around slowly. Very dramatic. Good.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Close your eyes. Point somewhere. Excellent decision-making skills.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Take five steps. Stop. Congratulations, you've made progress.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Clean something. Anything. I'll count it as progress.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Put your phone down and make one good decision.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Go outside. Your screen time is judging you.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Drink water. You're clearly running on chaos.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Go to bed. You're making questionable decisions.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Clean something. Anything. I'll count it as progress.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Talk to a human. Preferably one you trust.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Stop overthinking and do the obvious thing.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Do something useful for five minutes. I believe in you. Barely.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Leave the room. You need a plot twist.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Go for a walk. Your brain needs technical support.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Take a break. You're exhausting me.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Do literally anything else for five minutes.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Put the phone down. Yes, I'm talking to you.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Go outside and remember what daylight looks like.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "Congratulations. Your quest is: get off the couch.",
+    "category": "Actions Sarcastic",
+    "whenToUse": "anytime",
+    "weight": 2,
+    "config": null
+  },
+  {
+    "phrase": "It's Y.\nMaybe that's your answer.",
+    "category": "Time",
+    "whenToUse": "evening after 22:00",
+    "weight": 1,
+    "config": "Y = current local time from device"
+  },
+  {
+    "phrase": "Okay, okay. I felt that.",
+    "category": "sarcastic",
+    "whenToUse": "hard shake",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "That's enough. I'm not a cocktail.",
+    "category": "sarcastic",
+    "whenToUse": "hard shake",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Easy. I'm trying to concentrate.",
+    "category": "sarcastic",
+    "whenToUse": "hard shake",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Violence was unnecessary.",
+    "category": "sarcastic",
+    "whenToUse": "hard shake",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "You shook me. I answered. That's the deal.",
+    "category": "sarcastic",
+    "whenToUse": "hard shake",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "A little dramatic, don't you think?",
+    "category": "sarcastic",
+    "whenToUse": "hard shake",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Was that a question or a cry for help?",
+    "category": "sarcastic",
+    "whenToUse": "hard shake",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "You really wanted that answer, didn't you?",
+    "category": "sarcastic",
+    "whenToUse": "hard shake",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "You didn't have to shake me like that.",
+    "category": "sarcastic",
+    "whenToUse": "low shake",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "That's not a shake. Try again.",
+    "category": "sarcastic",
+    "whenToUse": "low shake",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Was that supposed to be a shake?",
+    "category": "sarcastic",
+    "whenToUse": "low shake",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "I've seen stronger commitment.",
+    "category": "sarcastic",
+    "whenToUse": "low shake",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "You barely moved me.",
+    "category": "sarcastic",
+    "whenToUse": "low shake",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "It's Monday. I'm not making decisions for you.",
+    "category": "sarcastic",
+    "whenToUse": "Monday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Monday? Absolutely not.",
+    "category": "sarcastic",
+    "whenToUse": "Monday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "It's Monday. Lower your expectations.",
+    "category": "sarcastic",
+    "whenToUse": "Monday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Ask again when it's Friday.",
+    "category": "sarcastic",
+    "whenToUse": "Monday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "It's Monday. Even the universe needs coffee.",
+    "category": "sarcastic",
+    "whenToUse": "Monday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "It's Friday. You already know what the answer is.",
+    "category": "sarcastic",
+    "whenToUse": "Friday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "It's Friday. Do something questionable.",
+    "category": "sarcastic",
+    "whenToUse": "Friday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Friday says yes. Your Monday self may disagree.",
+    "category": "sarcastic",
+    "whenToUse": "Friday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "It's Friday. Consequences are a Monday problem.",
+    "category": "sarcastic",
+    "whenToUse": "Friday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Finally. A reasonable day for bad decisions.",
+    "category": "sarcastic",
+    "whenToUse": "Friday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "It's Sunday. Think about it tomorrow.",
+    "category": "sarcastic",
+    "whenToUse": "Sunday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Sunday is for avoiding unnecessary decisions.",
+    "category": "sarcastic",
+    "whenToUse": "Sunday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Ask again tomorrow. Monday can suffer instead.",
+    "category": "sarcastic",
+    "whenToUse": "Sunday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "It's late. Maybe don't make life-changing decisions tonight.",
+    "category": "sarcastic",
+    "whenToUse": "Sunday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "It's past your bedtime. That's your answer.",
+    "category": "sarcastic",
+    "whenToUse": "Sunday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "It's late. Your judgment has officially clocked out.",
+    "category": "sarcastic",
+    "whenToUse": "Sunday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Ask me again in the morning. Your brain might be less dramatic.",
+    "category": "sarcastic",
+    "whenToUse": "Sunday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "At this hour? Absolutely not.",
+    "category": "sarcastic",
+    "whenToUse": "Sunday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "It's getting late. Future You can deal with this.",
+    "category": "sarcastic",
+    "whenToUse": "Sunday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Midnight is a terrible time for a decision. Conveniently, you're here.",
+    "category": "sarcastic",
+    "whenToUse": "Sunday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Sleep on it. Literally.",
+    "category": "sarcastic",
+    "whenToUse": "Sunday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Nothing good happens after midnight. Except this app, obviously.",
+    "category": "sarcastic",
+    "whenToUse": "Sunday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "It's late. Go to bed and pretend this never happened.",
+    "category": "sarcastic",
+    "whenToUse": "Sunday",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "It's morning. You still have time to change your mind.",
+    "category": "sarcastic",
+    "whenToUse": "Morning",
+    "weight": 1,
+    "config": "time = current local time from device; morning = 05:00-11:59"
+  },
+  {
+    "phrase": "It's early. Let's not ruin the day just yet.",
+    "category": "sarcastic",
+    "whenToUse": "Morning",
+    "weight": 1,
+    "config": "time = current local time from device; morning = 05:00-11:59"
+  },
+  {
+    "phrase": "Too early for this level of chaos.",
+    "category": "sarcastic",
+    "whenToUse": "Morning",
+    "weight": 1,
+    "config": "time = current local time from device; morning = 05:00-11:59"
+  },
+  {
+    "phrase": "Ask again after coffee.",
+    "category": "sarcastic",
+    "whenToUse": "Morning",
+    "weight": 1,
+    "config": "time = current local time from device; morning = 05:00-11:59"
+  },
+  {
+    "phrase": "The day has barely started. Please behave accordingly.",
+    "category": "sarcastic",
+    "whenToUse": "Morning",
+    "weight": 1,
+    "config": "time = current local time from device; morning = 05:00-11:59"
+  },
+  {
+    "phrase": "You have Z% battery. Maybe focus on that.",
+    "category": "sarcastic",
+    "whenToUse": "low battery",
+    "weight": 1,
+    "config": "Z = current battery percentage from device; use when Z < 13%"
+  },
+  {
+    "phrase": "Your phone is dying. And you're asking me?",
+    "category": "sarcastic",
+    "whenToUse": "low battery",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Z% battery. This feels like a sign.",
+    "category": "sarcastic",
+    "whenToUse": "low battery",
+    "weight": 1,
+    "config": "Z = current battery percentage from device; use when Z < 13%"
+  },
+  {
+    "phrase": "Your battery has opinions about your priorities.",
+    "category": "sarcastic",
+    "whenToUse": "low battery",
+    "weight": 1,
+    "config": "Z = current battery percentage from device; use when Z < 13%"
+  },
+  {
+    "phrase": "Your phone is at Z%. You have bigger problems.",
+    "category": "sarcastic",
+    "whenToUse": "low battery",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "You're running on Z%. Emotionally or battery-wise?",
+    "category": "sarcastic",
+    "whenToUse": "low battery",
+    "weight": 1,
+    "config": "Z = current battery percentage from device; use when Z < 13%"
+  },
+  {
+    "phrase": "Charge your phone. Then make questionable decisions.",
+    "category": "sarcastic",
+    "whenToUse": "low battery",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Your battery is begging you to stop.",
+    "category": "sarcastic",
+    "whenToUse": "low battery",
+    "weight": 1,
+    "config": "Z = current battery percentage from device; use when Z < 13%"
+  },
+  {
+    "phrase": "You have Z%. Make it count.",
+    "category": "sarcastic",
+    "whenToUse": "low battery",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "At this battery level, I'm afraid to answer.",
+    "category": "sarcastic",
+    "whenToUse": "low battery",
+    "weight": 1,
+    "config": "Z = current battery percentage from device; use when Z < 13%"
+  },
+  {
+    "phrase": "Z% battery. At least one thing in your life is under control.",
+    "category": "sarcastic",
+    "whenToUse": "High battery",
+    "weight": 1,
+    "config": "Z = current battery percentage from device; use when Z > 95%"
+  },
+  {
+    "phrase": "Your battery is fine. Can't say the same about your decision.",
+    "category": "sarcastic",
+    "whenToUse": "High battery",
+    "weight": 1,
+    "config": "Z = current battery percentage from device; use when Z > 95%"
+  },
+  {
+    "phrase": "Z%. Impressive. Now about that question...",
+    "category": "sarcastic",
+    "whenToUse": "High battery",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Fully charged. Still no idea? Interesting.",
+    "category": "sarcastic",
+    "whenToUse": "High battery",
+    "weight": 1,
+    "config": "Z = current battery percentage from device; use when Z > 95%"
+  },
+  {
+    "phrase": "Hold me perfectly still.\n\nПользователь старается не двигать телефон.\n\nЧерез 2 секунды:\n\nInteresting. You actually listened.\n\nили:\n\nYou managed to stay still for two seconds. I'm impressed.\n\nили:\n\nStability achieved. Your life next, perhaps?",
+    "category": "interactive",
+    "whenToUse": "still for 2 seconds",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Put the phone down before you text someone you shouldn't.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Ask me again in the morning.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The answer will be clearer tomorrow.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Come back after sunrise.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Not tonight.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Tomorrow feels more promising.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Try again when the sun is up.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The stars aren't telling me.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The moon says wait.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The universe is closed for tonight.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Even the universe needs sleep.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Ask again after you've slept on it.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Sleep on it. Literally.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "This one needs a night to think.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Let the night pass.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Check again tomorrow.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Morning-you will have opinions.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Ask me again tomorrow. I'll pretend I knew all along.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The answer is currently unavailable. Try again after sunrise.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The universe has gone to bed.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "My crystal ball is off the clock.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Consult me during business hours.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Magic is closed for the evening.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Sorry, the prophecy department is closed.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Predictions resume tomorrow.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Come back tomorrow. I have nothing for you tonight.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The stars are being unusually unhelpful tonight.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The universe isn't taking questions after dark.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Apparently, this is a tomorrow problem.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The answer is sleeping.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Your answer has gone to bed.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The future is currently unavailable.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Ask again when tomorrow becomes today.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Tonight says no comment.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The night refuses to elaborate.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The moon is keeping that one to itself.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Even the stars are saying, “Wait.”",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The universe says: sleep on it.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The cosmos recommends a 12-hour cooling-off period.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Consider this your cosmic timeout.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The stars have seen enough for one night.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "I checked the universe. It's inconclusive after dark.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Weirdly, the answer makes more sense in daylight.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "This prophecy requires daylight.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "I'm sensing... tomorrow.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "I'm getting strong “ask again tomorrow” energy.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "My prediction? You'll have a different question in the morning.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "By morning, you'll either know or have forgotten why you cared.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "You'll understand this after one good night's sleep.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Something tells me you'll see it differently tomorrow.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The answer is hiding until morning.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Midnight has terrible decision-making energy.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The later it gets, the less convincing your question becomes.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "This feels much clearer in daylight.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The answer has entered sleep mode.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "My magic powers are running on night mode.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Night mode activated. Answers temporarily less reliable.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "The crystal ball recommends waiting until morning.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "I could answer... but it's late.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "I know the answer. You're not getting it tonight.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "I have an answer. Unfortunately, it's bedtime.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "Ask me tomorrow. I might be more cooperative.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": null
+  },
+  {
+    "phrase": "It's Y. What exactly are you expecting from me right now?",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": "Y = current local time from device"
+  },
+  {
+    "phrase": "Y? Bold time to ask that question.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": "Y = current local time from device"
+  },
+  {
+    "phrase": "Y. Excellent time for overthinking.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": "Y = current local time from device"
+  },
+  {
+    "phrase": "It's Y. Your judgment has officially gone home.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": "Y = current local time from device"
+  },
+  {
+    "phrase": "Y. The universe suggests you sleep on it.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": "Y = current local time from device"
+  },
+  {
+    "phrase": "It's Y. I think we've done enough thinking for today.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": "Y = current local time from device"
+  },
+  {
+    "phrase": "Y. Nothing good needs to happen right now.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": "Y = current local time from device"
+  },
+  {
+    "phrase": "It's Y. Let's pretend you never asked.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": "Y = current local time from device"
+  },
+  {
+    "phrase": "Y. You really want to make this decision now?",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": "Y = current local time from device"
+  },
+  {
+    "phrase": "It's Y. Come back when it's someone else's problem.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": "Y = current local time from device"
+  },
+  {
+    "phrase": "It's Y. Even your future self is asleep.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": "Y = current local time from device"
+  },
+  {
+    "phrase": "Y. This feels like a tomorrow problem.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": "Y = current local time from device"
+  },
+  {
+    "phrase": "It's Y. Please don't make tonight memorable.",
+    "category": "Time",
+    "whenToUse": "22:30-04:00",
+    "weight": 1,
+    "config": "Y = current local time from device"
+  }
+]
