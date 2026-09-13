@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const DISCLAIMER_TEXT = `This app is for entertainment purposes only and isn't a substitute for professional advice.
 
-If you're going through a hard time, please reach out to a mental health professional or a crisis line — for example, 988 in the US, or the equivalent helpline in your country.`;
+If you're going through a hard time, please reach out to a mental health professional, or find a crisis line for your country at findahelpline.com. If there's immediate danger, contact your local emergency services.`;
 
 export default function Disclaimer() {
   const [open, setOpen] = useState(false);

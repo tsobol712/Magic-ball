@@ -23,21 +23,49 @@ function widthAtYFrac(yFrac) {
 }
 
 // ============================================================
-// SOUND — change just this one path to swap the sound file.
-// Put the file in /public/sounds/ so this path resolves.
+// SOUND — no code edits needed to swap the sound file.
+// Just rename whatever file you download to "reveal" + its real
+// extension (mp3, wav, or ogg — whichever it actually is) and drop it
+// in /public/sounds/. The code below checks each candidate name and
+// uses whichever one actually exists.
 // ============================================================
-const SOUND_FILE = '/sounds/reveal.mp3';
 const ENABLE_SOUND = true;
+const SOUND_CANDIDATES = ['/sounds/reveal.mp3', '/sounds/reveal.wav', '/sounds/reveal.ogg'];
 const SOUND_MAP_BY_CATEGORY = {
   // Sarcastic: '/sounds/sarcastic-pop.mp3',
 };
 
+let resolvedSoundSrc; // cached after the first successful check, undefined until then
+
+async function resolveSoundSrc() {
+  if (resolvedSoundSrc) return resolvedSoundSrc;
+  for (const candidate of SOUND_CANDIDATES) {
+    try {
+      const res = await fetch(candidate, { method: 'HEAD' });
+      if (res.ok) {
+        resolvedSoundSrc = candidate;
+        return candidate;
+      }
+    } catch {
+      // network hiccup on this candidate — just try the next one
+    }
+  }
+  return null; // no sound file added yet — stay silent, not an error
+}
+
 function playSound(category) {
   if (!ENABLE_SOUND) return;
-  const src = SOUND_MAP_BY_CATEGORY[category] || SOUND_FILE;
-  const audio = new Audio(src);
-  audio.volume = 0.5;
-  audio.play().catch(() => {});
+  const override = SOUND_MAP_BY_CATEGORY[category];
+  if (override) {
+    new Audio(override).play().catch(() => {});
+    return;
+  }
+  resolveSoundSrc().then((src) => {
+    if (!src) return;
+    const audio = new Audio(src);
+    audio.volume = 0.5;
+    audio.play().catch(() => {});
+  });
 }
 
 function vibrate(pattern) {
@@ -54,7 +82,8 @@ function vibrate(pattern) {
 // stays tap-only — nothing else breaks.
 // ============================================================
 const SHAKE_THRESHOLD = 16; // m/s² of acceleration change — tuned to need a real shake, not a bump
-const SHAKE_COOLDOWN_MS = 1200;
+const SHAKE_CALM_THRESHOLD = 3; // below this counts as "settled down"
+const SHAKE_MIN_GAP_MS = 1200; // minimum time before we'll even consider re-arming
 
 function needsIOSMotionPermission() {
   return typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function';
@@ -139,6 +168,7 @@ export default function MagicBall() {
   const motionRequestedRef = useRef(false);
   const lastAccelRef = useRef({ x: 0, y: 0, z: 0 });
   const lastShakeTimeRef = useRef(0);
+  const armedRef = useRef(false); // starts unarmed — must see calm motion once before the first shake can trigger
   const revealRef = useRef(() => {});
 
   const reveal = useCallback(() => {
@@ -171,8 +201,6 @@ export default function MagicBall() {
 
   const handleMotion = useCallback((event) => {
     const now = Date.now();
-    if (now - lastShakeTimeRef.current < SHAKE_COOLDOWN_MS) return;
-
     const accel = event.accelerationIncludingGravity || event.acceleration;
     if (!accel) return;
 
@@ -184,8 +212,19 @@ export default function MagicBall() {
 
     lastAccelRef.current = { x: accel.x || 0, y: accel.y || 0, z: accel.z || 0 };
 
+    if (!armedRef.current) {
+      // Not allowed to trigger yet — waiting for the phone to actually
+      // settle down (not just for time to pass), so residual wobble right
+      // after a shake can't sneak in as a second, unintended trigger.
+      if (delta < SHAKE_CALM_THRESHOLD && now - lastShakeTimeRef.current > SHAKE_MIN_GAP_MS) {
+        armedRef.current = true;
+      }
+      return;
+    }
+
     if (delta > SHAKE_THRESHOLD) {
       lastShakeTimeRef.current = now;
+      armedRef.current = false;
       revealRef.current();
     }
   }, []);
