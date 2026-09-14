@@ -1,6 +1,7 @@
-import { useRef, useState, useCallback } from 'react';
+import { useRef, useState, useCallback, useEffect } from 'react';
 import ballImg from '../assets/ball.png';
 import { pickResponse } from '../data/pickResponse.js';
+import { unlockAudioPlayback, playRevealSound } from '../utils/audio.js';
 
 // Triangle corners measured directly from the ball artwork (see
 // magic_ball_ai_collab_retrospective.md for how these were calibrated —
@@ -14,7 +15,7 @@ const triTopFrac = TRI.apex[1];
 const triBaseFrac = TRI.left[1];
 const triHeightFrac = triBaseFrac - triTopFrac;
 const triBaseWidthFrac = TRI.right[0] - TRI.left[0];
-const SAFETY = 0.74;
+const SAFETY = 0.78;
 
 function widthAtYFrac(yFrac) {
   if (yFrac <= triTopFrac) return 0;
@@ -22,57 +23,12 @@ function widthAtYFrac(yFrac) {
   return triBaseWidthFrac * ((yFrac - triTopFrac) / triHeightFrac);
 }
 
-// ============================================================
-// SOUND — no code edits needed to swap the sound file.
-// Just rename whatever file you download to "reveal" + its real
-// extension (mp3, wav, or ogg — whichever it actually is) and drop it
-// in /public/sounds/. The code below checks each candidate name and
-// uses whichever one actually exists.
-// ============================================================
-const ENABLE_SOUND = true;
-const SOUND_CANDIDATES = ['/sounds/reveal.mp3', '/sounds/reveal.wav', '/sounds/reveal.ogg'];
-const SOUND_MAP_BY_CATEGORY = {
-  // Sarcastic: '/sounds/sarcastic-pop.mp3',
-};
-
-let resolvedSoundSrc; // cached after the first successful check, undefined until then
-
-async function resolveSoundSrc() {
-  if (resolvedSoundSrc) return resolvedSoundSrc;
-  for (const candidate of SOUND_CANDIDATES) {
-    try {
-      const res = await fetch(candidate, { method: 'HEAD' });
-      if (res.ok) {
-        resolvedSoundSrc = candidate;
-        return candidate;
-      }
-    } catch {
-      // network hiccup on this candidate — just try the next one
-    }
-  }
-  return null; // no sound file added yet — stay silent, not an error
-}
-
-function playSound(category) {
-  if (!ENABLE_SOUND) return;
-  const override = SOUND_MAP_BY_CATEGORY[category];
-  if (override) {
-    new Audio(override).play().catch(() => {});
-    return;
-  }
-  resolveSoundSrc().then((src) => {
-    if (!src) return;
-    const audio = new Audio(src);
-    audio.volume = 0.5;
-    audio.play().catch(() => {});
-  });
-}
-
 function vibrate(pattern) {
   if (navigator.vibrate) navigator.vibrate(pattern); // no-op on iOS Safari — platform limitation
 }
 
 // ============================================================
+
 // SHAKE DETECTION
 // On iPhone (iOS 13+), reading motion sensors requires the user to grant
 // permission, and Safari only allows asking for that permission in direct
@@ -82,6 +38,7 @@ function vibrate(pattern) {
 // stays tap-only — nothing else breaks.
 // ============================================================
 const SHAKE_THRESHOLD = 16; // m/s² of acceleration change — tuned to need a real shake, not a bump
+const HARD_SHAKE_THRESHOLD = 36; // above this, classify the shake as "hard" rather than "low"
 const SHAKE_CALM_THRESHOLD = 3; // below this counts as "settled down"
 const SHAKE_MIN_GAP_MS = 1200; // minimum time before we'll even consider re-arming
 
@@ -102,16 +59,23 @@ async function ensureMotionPermission() {
 const measureCanvas = document.createElement('canvas');
 const measureCtx = measureCanvas.getContext('2d');
 
-function wrapAtWidth(text, fontPx, maxWidthPx) {
+// Wraps text top-to-bottom where each row is allowed a DIFFERENT max width
+// (rowWidthsTopDown[0] = width for the first/topmost row of this attempt,
+// etc — narrower rows first, since that's how the triangle actually looks).
+function wrapWithRowWidths(text, fontPx, rowWidthsTopDown) {
   measureCtx.font = `600 ${fontPx}px 'Space Grotesk', sans-serif`;
   if ('letterSpacing' in measureCtx) measureCtx.letterSpacing = `${fontPx * 0.01}px`;
   const words = text.split(' ');
   const lines = [];
   let current = '';
+  let rowIndex = 0;
+  const widthFor = (i) => rowWidthsTopDown[Math.min(i, rowWidthsTopDown.length - 1)];
+
   for (const word of words) {
     const test = current ? `${current} ${word}` : word;
-    if (measureCtx.measureText(test).width > maxWidthPx && current) {
+    if (measureCtx.measureText(test).width > widthFor(rowIndex) && current) {
       lines.push(current);
+      rowIndex++;
       current = word;
     } else {
       current = test;
@@ -122,38 +86,69 @@ function wrapAtWidth(text, fontPx, maxWidthPx) {
 }
 
 function fitAndPlace(ballSizePx, text) {
-  const bottomLimitFrac = triBaseFrac - 0.05;
-  const topLimitFrac = triTopFrac + 0.05;
-  const midFrac = (topLimitFrac + bottomLimitFrac) / 2;
+  const bottomLimitFrac = triBaseFrac - 0.015;
+  const topLimitFrac = triTopFrac + 0.015;
 
-  for (let fontPx = 22; fontPx >= 9; fontPx--) {
+  let lastAttempt = null;
+
+  for (let fontPx = 22; fontPx >= 8; fontPx--) {
     const lineHeightFrac = (fontPx * 1.22) / ballSizePx;
+    const maxRows = Math.floor((bottomLimitFrac - topLimitFrac) / lineHeightFrac);
+    if (maxRows < 1) continue;
 
-    let blockTopGuess = midFrac - lineHeightFrac;
-    let maxWidthPx = widthAtYFrac(blockTopGuess) * ballSizePx * SAFETY;
-    let lines = wrapAtWidth(text, fontPx, maxWidthPx);
+    // Width available for each possible row, counting from the BOTTOM
+    // (row 0 = bottommost/widest row) up to the apex (narrowest).
+    const rowWidthsBottomUp = [];
+    for (let r = 0; r < maxRows; r++) {
+      const rowTopFrac = bottomLimitFrac - (r + 1) * lineHeightFrac; // this row's narrower (top) edge
+      rowWidthsBottomUp.push(widthAtYFrac(rowTopFrac) * ballSizePx * SAFETY);
+    }
+    const rowWidthsTopDown = [...rowWidthsBottomUp].reverse();
 
-    let blockHeightFrac = lines.length * lineHeightFrac;
-    let blockTopFrac = midFrac - blockHeightFrac / 2;
-    let blockBottomFrac = midFrac + blockHeightFrac / 2;
-    const refinedMaxWidthPx = widthAtYFrac(blockTopFrac) * ballSizePx * SAFETY;
-    lines = wrapAtWidth(text, fontPx, refinedMaxWidthPx);
-    blockHeightFrac = lines.length * lineHeightFrac;
-    blockTopFrac = midFrac - blockHeightFrac / 2;
-    blockBottomFrac = midFrac + blockHeightFrac / 2;
+    // Text is anchored to the bottom (always plenty of room there) and only
+    // grows upward into the narrower part of the triangle if it has to.
+    // Try using just the bottom-most row first, then two rows, etc. — the
+    // smallest number of (wide, bottom) rows that the phrase actually fits
+    // into wins, instead of always assuming the narrow top is in play.
+    let lines = null;
+    for (let n = 1; n <= maxRows; n++) {
+      const widthsForAttempt = rowWidthsTopDown.slice(maxRows - n);
+      const candidate = wrapWithRowWidths(text, fontPx, widthsForAttempt);
+      if (candidate.length <= n) {
+        lines = candidate;
+        break;
+      }
+    }
 
-    const widest = Math.max(...lines.map((l) => measureCtx.measureText(l).width));
-
-    if (blockTopFrac >= topLimitFrac && blockBottomFrac <= bottomLimitFrac && widest <= refinedMaxWidthPx) {
-      return { fontPx, lines, blockTopFrac, blockBottomFrac };
+    if (lines) {
+      const blockHeightFrac = lines.length * lineHeightFrac;
+      const result = {
+        fontPx,
+        lines,
+        blockTopFrac: bottomLimitFrac - blockHeightFrac,
+        blockBottomFrac: bottomLimitFrac,
+      };
+      lastAttempt = result;
+      return result; // first font size that fits within maxRows always succeeds
     }
   }
-  const fontPx = 9;
-  const lineHeightFrac = (fontPx * 1.22) / ballSizePx;
-  const lines = wrapAtWidth(text, fontPx, widthAtYFrac(midFrac) * ballSizePx * SAFETY);
-  const blockHeightFrac = lines.length * lineHeightFrac;
-  return { fontPx, lines, blockTopFrac: midFrac - blockHeightFrac / 2, blockBottomFrac: midFrac + blockHeightFrac / 2 };
+  // Reached only if even the smallest readable font, using every available
+  // row, still can't fit the phrase (see test report for which phrases).
+  return (
+    lastAttempt || {
+      fontPx: 8,
+      lines: [text],
+      blockTopFrac: topLimitFrac,
+      blockBottomFrac: bottomLimitFrac,
+    }
+  );
 }
+
+// Dev-only hook so the fitting logic can be tested directly against exact
+// phrases, instead of waiting for random taps to happen to pick them.
+// Left in the production bundle deliberately (tiny cost) — the e2e suite
+// exercises it against the built app, not just the dev server.
+window.__debugFit = (text, ballSizePx = 300) => fitAndPlace(ballSizePx, text);
 
 export default function MagicBall() {
   const ballRef = useRef(null);
@@ -165,20 +160,19 @@ export default function MagicBall() {
   const [topPercent, setTopPercent] = useState(50);
   const [widthPx, setWidthPx] = useState(0);
 
-  const motionRequestedRef = useRef(false);
   const lastAccelRef = useRef({ x: 0, y: 0, z: 0 });
   const lastShakeTimeRef = useRef(0);
   const armedRef = useRef(false); // starts unarmed — must see calm motion once before the first shake can trigger
   const revealRef = useRef(() => {});
 
-  const reveal = useCallback(() => {
+  const reveal = useCallback((shakeIntensity = null) => {
     if (busy) return;
     setBusy(true);
     setActive(false);
     setShaking(true);
 
     setTimeout(() => {
-      const item = pickResponse();
+      const item = pickResponse(new Date(), shakeIntensity);
       const ballSizePx = ballRef.current.getBoundingClientRect().width;
       const fit = fitAndPlace(ballSizePx, item.phrase);
 
@@ -187,7 +181,7 @@ export default function MagicBall() {
       setTopPercent(fit.blockTopFrac * 100);
       setWidthPx(widthAtYFrac(fit.blockBottomFrac) * ballSizePx * SAFETY);
 
-      playSound(item.category);
+      playRevealSound();
       vibrate(40);
       setShaking(false);
       setActive(true);
@@ -225,25 +219,39 @@ export default function MagicBall() {
     if (delta > SHAKE_THRESHOLD) {
       lastShakeTimeRef.current = now;
       armedRef.current = false;
-      revealRef.current();
+      const intensity = delta > HARD_SHAKE_THRESHOLD ? 'hard' : 'low';
+      revealRef.current(intensity);
     }
   }, []);
 
-  const handleFirstInteraction = useCallback(async () => {
-    if (motionRequestedRef.current) return;
-    motionRequestedRef.current = true;
+  const motionAttachedRef = useRef(false);
+
+  const attachMotionIfGranted = useCallback(async () => {
+    if (motionAttachedRef.current) return;
     const granted = await ensureMotionPermission();
-    if (granted) {
+    if (granted && !motionAttachedRef.current) {
+      motionAttachedRef.current = true;
       window.addEventListener('devicemotion', handleMotion);
     }
     // if denied or unsupported — silently stay tap-only, no error shown
   }, [handleMotion]);
 
+  useEffect(() => {
+    // If the person already granted motion permission in an earlier visit,
+    // most browsers let us reuse that grant without a fresh tap — so try
+    // right away. If this is the very first-ever grant, the browser will
+    // reject this silent attempt (no user gesture), and attachMotionIfGranted
+    // simply gets called again on the first real tap below, which works
+    // because a click IS a user gesture.
+    attachMotionIfGranted();
+  }, [attachMotionIfGranted]);
+
   return (
     <div
       className="ball-stage"
       onClick={() => {
-        handleFirstInteraction();
+        unlockAudioPlayback(); // must happen synchronously inside a real click, not after an await
+        attachMotionIfGranted();
         reveal();
       }}
     >

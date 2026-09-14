@@ -1,65 +1,24 @@
 # Ask Sarcastic Magic Ball
 
-A no-nonsense fortune ball for your phone — sarcastic, context-aware answers, zero data collection, no account, no ads (yet).
+A fortune-ball web app that gives a real, in-character answer every time — no "ask again later," no ads, no data collection. Built end-to-end as a solo product case study: spec → build → test → ship.
 
 **Live**: _add your Vercel URL here_
 
-Built as a solo product/dev project — from problem statement to shipped, tested MVP — using Claude as a development partner. Process docs (spec, AI-collaboration retrospective, test reports) linked at the bottom.
+## The problem
+Existing "magic ball" apps lean on a lazy fallback response, cluttered ads, and a clichéd starfield look. This one commits to always giving a real answer, keeps every interaction fully on-device (nothing about the question is ever transmitted anywhere), and has a distinct sarcastic personality instead of generic fortune-telling.
 
-## Why this exists
-Existing "magic ball" apps lean on a lazy "ask again later" response, cluttered ads, and a clichéd starfield look. This one guarantees a real answer every time, keeps the whole interaction on-device (nothing about your question is ever sent anywhere), and is built around a specific sense of humor instead of generic fortune-telling.
+## What this project demonstrates
+- **Spec-first product thinking**: user stories, P0/P1/P2 prioritization, and Given/When/Then acceptance criteria written before implementation — see `magic_ball_spec_v1.md`.
+- **Real testing discipline, not just "looks fine"**: a full unit + e2e test suite (Vitest + Playwright), including a regression run against the *entire* 360-phrase content set — not just spot-checking a few examples — which is what actually caught the text-rendering edge cases documented in the test report.
+- **Judgment under ambiguity**: e.g. catching a trademark-risk naming issue before committing to it, deciding what's in scope for an MVP vs. deferred (mobile app wrapper, sensor-gated content that isn't viable on the target platform), and making an explicit tradeoff call on the ~5% of content too long to fit the UI cleanly rather than silently forcing it.
+- **Debugging methodology**: see `magic_ball_ai_collab_retrospective.md` for a concrete account of tracking down a bug with no console error (a stale React effect closure) versus a data-quality bug (leaked authoring notes in the source spreadsheet).
 
 ## Tech stack
-- React + Vite, no backend — the entire response pool ships with the app
-- Deployed on Vercel, auto-deploying from this repo
-- Vitest for logic unit tests, Playwright for e2e (splash, tap/shake flow, text-fit, disclaimer)
-
-## Status
-MVP — core flow (splash → ask → shake or tap → answer) is live and tested. Mobile app wrapper (Capacitor/App Store) is an open decision, not committed to. See `magic_ball_spec_v1.md` for full scope and open questions.
+React + Vite, no backend — the full response pool ships with the app, so no question ever leaves the device. Deployed on Vercel with auto-deploy from this repo.
 
 ## Process documentation
-This project was built with a deliberate spec → build → test loop, documented for portfolio purposes:
-- Product spec (user stories, requirements, acceptance criteria)
-- AI collaboration retrospective — what went wrong and how it got debugged
-- Test report + test case catalog
+- **Product spec** — `magic_ball_spec_v1.md`
+- **AI collaboration retrospective** — `magic_ball_ai_collab_retrospective.md`
+- **Test report & test case catalog** — `magic_ball_test_report_v1.md`, `magic_ball_test_cases.md`
 
----
-
-## Структура проекта
-```
-src/
-  App.jsx                — заставка → главный экран
-  components/
-    Splash.jsx           — заставка (мин. 1.5 сек)
-    MagicBall.jsx         — сам шар: анимация, подгонка текста, звук
-    Stars.jsx             — фон с мерцающими звёздами
-  data/
-    responses.json        — 364 фразы (из xlsx), с весами и контекстом
-    pickResponse.js        — логика выбора фразы под текущий контекст
-  assets/
-    ball.png               — картинка шара
-    splash.jpg              — картинка для заставки
-```
-
-## Тесты
-- `npm test` — юнит-тесты (Vitest) для логики выбора фразы: веса, контекст по времени/дню, исключение "битых" мини-квестов. Не требуют браузера.
-- `npm run test:e2e` — end-to-end тесты (Playwright) в реальном браузере: заставка, тап и проверка границ текста, дисклеймер, тряска без двойного срабатывания. Требуют `npx playwright install` перед первым запуском (скачивает браузер).
-
-Оба набора прогонялись перед каждым релизом — детали и находки см. в test-report/test-checklist в документации проекта.
-
-## Как добавить/поменять звук
-1. Скачал новый звук — переименуй файл в `reveal` + его настоящее расширение (`reveal.mp3`, `reveal.wav` или `reveal.ogg` — какой формат реально скачал, такое и расширение) и положи в `public/sounds/`.
-2. Код сам находит файл по этому имени — **ничего в коде менять не нужно**, ни сейчас, ни при следующей замене звука.
-3. Разные звуки под разные категории фраз (по желанию, позже) — впиши пары в `SOUND_MAP_BY_CATEGORY` в начале `MagicBall.jsx`.
-
-## Что ещё не реализовано (см. спек, P1/P2)
-- Контекст по заряду батареи и силе тряски — сенсоры пока не подключены, такие фразы временно не показываются (см. `pickResponse.js`, `NOT_YET_IMPLEMENTED`).
-- Вибрация подключена (`navigator.vibrate`), но не сработает в Safari на iOS — ограничение платформы.
-
-## Запуск локально (не обязательно)
-Если однажды поставишь Node.js:
-```
-npm install
-npm run dev
-```
-Без этого тоже нормально — просто загружаешь файлы в GitHub, Vercel сам всё соберёт.
+Developer-facing setup notes (project structure, how to run tests, how to swap the sound file) live in `DEVELOPMENT.md`, kept separate from this overview.

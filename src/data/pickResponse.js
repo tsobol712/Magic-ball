@@ -2,25 +2,20 @@ import responses from './responses.json';
 
 const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-// Sensor-based conditions (battery level, shake intensity) aren't wired up
-// yet — see spec P0/P1. Phrases that require them are excluded from the
-// pool for now rather than shown at the wrong moment.
-const NOT_YET_IMPLEMENTED = new Set([
-  'low battery',
-  'high battery',
-  'hard shake',
-  'low shake',
-  'still for 2 seconds',
-]);
+// "still for 2 seconds" needs its own stillness-detection logic (not just
+// a single threshold check like shake does), so it's not wired up yet.
+const NOT_YET_IMPLEMENTED = new Set(['still for 2 seconds']);
 
 function isMultiStepScript(phrase) {
   // Some rows in the source spreadsheet aren't single displayable answers —
   // they're multi-step quest scripts (conditional YES/NO branches, timed
-  // reveal sequences) with literal "<br>" tags and author notes baked into
-  // the "Phrase" column. Showing these as-is would leak raw markup and
-  // Russian production notes to the end user. Excluded until they get
-  // dedicated step-by-step UI (see test report — Known Issues).
-  return phrase.includes('<br>');
+  // reveal sequences) with literal "<br>" tags or line breaks, and author
+  // notes (sometimes in Russian) baked into the "Phrase" column. Showing
+  // these as-is would leak raw markup/production notes to the end user.
+  // Excluded until they get dedicated step-by-step UI (see test report —
+  // Known Issues). Cyrillic characters are a reliable tell for a leaked
+  // author note, since the app itself is English-only.
+  return phrase.includes('<br>') || phrase.includes('\n') || /[а-яА-Я]/.test(phrase);
 }
 
 function timeInRange(nowMinutes, startMinutes, endMinutes) {
@@ -36,11 +31,14 @@ function parseTimeToMinutes(hhmm) {
   return h * 60 + m;
 }
 
-function isConditionActiveNow(whenToUse, now) {
+function isConditionActiveNow(whenToUse, now, shakeIntensity) {
   const value = whenToUse.trim();
   const lower = value.toLowerCase();
 
   if (lower === 'anytime') return true;
+
+  if (lower === 'hard shake') return shakeIntensity === 'hard';
+  if (lower === 'low shake') return shakeIntensity === 'low';
 
   if (NOT_YET_IMPLEMENTED.has(lower)) return false;
 
@@ -71,11 +69,15 @@ function isConditionActiveNow(whenToUse, now) {
  * Returns a random phrase object, weighted, from among the phrases whose
  * whenToUse condition is true right now (anytime phrases always qualify,
  * with double weight as per the spec).
+ *
+ * shakeIntensity: 'hard' | 'low' | null — pass this when the reveal was
+ * triggered by an actual shake (not a tap), so "hard shake"/"low shake"
+ * phrases can be matched. Leave it null for a tap.
  */
-export function pickResponse(now = new Date()) {
+export function pickResponse(now = new Date(), shakeIntensity = null) {
   const pool = responses
     .filter((r) => !isMultiStepScript(r.phrase))
-    .filter((r) => isConditionActiveNow(r.whenToUse, now));
+    .filter((r) => isConditionActiveNow(r.whenToUse, now, shakeIntensity));
   const candidates = pool.length > 0 ? pool : responses.filter((r) => r.whenToUse === 'anytime' && !isMultiStepScript(r.phrase));
 
   const totalWeight = candidates.reduce((sum, r) => sum + r.weight, 0);

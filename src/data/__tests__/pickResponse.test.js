@@ -2,21 +2,22 @@ import { describe, it, expect } from 'vitest';
 import { pickResponse } from '../pickResponse.js';
 
 describe('pickResponse', () => {
-  it('never returns a multi-step script phrase (contains <br>)', () => {
+  it('never returns a multi-step script or leaked-note phrase (contains <br>, a newline, or Cyrillic text)', () => {
     for (let i = 0; i < 200; i++) {
       const result = pickResponse();
       expect(result.phrase).not.toContain('<br>');
+      expect(result.phrase).not.toContain('\n');
+      expect(/[а-яА-Я]/.test(result.phrase)).toBe(false);
     }
   });
 
-  it('never returns a phrase gated on a sensor we have not wired up (battery/shake), when picked at a neutral time', () => {
+  it('never returns a phrase gated on a sensor we have not wired up, when picked at a neutral time', () => {
     // Tuesday 15:00 — doesn't match any special time/day window, so only
     // "anytime" phrases (and any condition we DO implement) should qualify
     const neutralTime = new Date('2026-01-13T15:00:00');
     for (let i = 0; i < 200; i++) {
       const result = pickResponse(neutralTime);
-      expect(['low battery', 'high battery', 'hard shake', 'low shake', 'still for 2 seconds'])
-        .not.toContain(result.whenToUse.toLowerCase());
+      expect(['still for 2 seconds']).not.toContain(result.whenToUse.toLowerCase());
     }
   });
 

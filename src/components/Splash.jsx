@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import splashImg from '../assets/splash.jpg';
+import { playSplashSound } from '../utils/audio.js';
 
 const MIN_DISPLAY_MS = 1500;
 
@@ -12,6 +13,21 @@ export default function Splash({ isAppReady, onDone }) {
   const [minTimeElapsed, setMinTimeElapsed] = useState(false);
   const [fadingOut, setFadingOut] = useState(false);
   const doneTriggeredRef = useRef(false);
+
+  useEffect(() => {
+    // Deliberately NOT stopped when this component unmounts — the splash
+    // sound (with its own ~4s built-in fade-out) is meant to keep playing
+    // in the background even after the visual splash screen is gone. It
+    // only gets cut short if the person actually starts interacting with
+    // the ball — see playRevealSound() in utils/audio.js, which calls
+    // stopSplashSound() first.
+    //
+    // Heads up: most mobile browsers (iOS Safari especially) block audio
+    // from autoplaying on page load without a prior tap. This call is
+    // best-effort — it may simply not produce sound on a first-ever visit,
+    // which is a platform restriction, not a bug in this code.
+    playSplashSound();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setMinTimeElapsed(true), MIN_DISPLAY_MS);
