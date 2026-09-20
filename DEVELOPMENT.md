@@ -23,7 +23,7 @@ src/
 - `npm test` — unit tests (Vitest) for phrase-selection logic: weights, time/day context, excluding broken multi-step entries. No browser needed.
 - `npm run test:e2e` — end-to-end tests (Playwright) in a real browser: splash flow, tap/shake reveal with bounds-checking, disclaimer, no double-fire on shake. Requires `npx playwright install` before the first run.
 
-Both suites ran before every release — see the test report and test case catalog (linked from the main README) for what they actually caught.
+Both suites ran before every release — see the test report and test case catalog (linked from the main README) for what they actually caught, and `magic_ball_test_checklist.md` for the manual pass-before-shipping checklist.
 
 ## Sound
 1. Rename whatever file you download to `reveal` + its real extension (`reveal.mp3`, `reveal.wav`, or `reveal.ogg`) and drop it in `public/sounds/`. The code finds it automatically — no code changes needed, now or next time you swap it.

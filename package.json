@@ -11,13 +11,19 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@capacitor/android": "^8.5.2",
+    "@capacitor/cli": "^8.5.2",
+    "@capacitor/core": "^8.5.2",
+    "@capacitor/haptics": "^8.0.2",
+    "@capacitor/ios": "^8.5.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@playwright/test": "^1.47.0",
     "@vitejs/plugin-react": "^4.3.1",
     "vite": "^5.4.0",
-    "vitest": "^2.1.1",
-    "@playwright/test": "^1.47.0"
+    "vitest": "^2.1.1"
   }
 }

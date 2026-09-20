@@ -23,8 +23,21 @@ function widthAtYFrac(yFrac) {
   return triBaseWidthFrac * ((yFrac - triTopFrac) / triHeightFrac);
 }
 
-function vibrate(pattern) {
-  if (navigator.vibrate) navigator.vibrate(pattern); // no-op on iOS Safari — platform limitation
+async function vibrate(webPatternMs) {
+  // Inside the native app wrapper, use real device haptics (works on iOS
+  // too, unlike the web Vibration API). window.Capacitor only exists when
+  // running inside the native shell, not on the plain website — so this
+  // safely falls back to the old web-only behavior there.
+  if (window.Capacitor?.isNativePlatform?.()) {
+    try {
+      const { Haptics, ImpactStyle } = await import('@capacitor/haptics');
+      await Haptics.impact({ style: ImpactStyle.Medium });
+      return;
+    } catch {
+      // plugin not available for some reason — fall through to the web API
+    }
+  }
+  if (navigator.vibrate) navigator.vibrate(webPatternMs); // no-op on iOS Safari — platform limitation
 }
 
 // ============================================================
