@@ -1,4 +1,5 @@
 import responses from './responses.json';
+import { applyPlaceholders } from './applyPlaceholders.js';
 
 const DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
@@ -85,7 +86,7 @@ export function pickResponse(now = new Date(), shakeIntensity = null) {
 
   for (const item of candidates) {
     roll -= item.weight;
-    if (roll <= 0) return item;
+    if (roll <= 0) return applyPlaceholders(item, now);
   }
-  return candidates[candidates.length - 1];
+  return applyPlaceholders(candidates[candidates.length - 1], now);
 }
