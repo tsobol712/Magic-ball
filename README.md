@@ -2,7 +2,7 @@
 
 A fortune-ball web app that gives a real, in-character answer every time — no "ask again later," no ads, no data collection. Built end-to-end as a solo product case study: spec → build → test → ship.
 
-**Live**:[ [(https://magic-ball-wine.vercel.app/)_]
+**Live**: https://magic-ball-wine.vercel.app/
 
 ## The problem
 Existing "magic ball" apps lean on a lazy fallback response, cluttered ads, and a clichéd starfield look. This one commits to always giving a real answer, keeps every interaction fully on-device (nothing about the question is ever transmitted anywhere), and has a distinct sarcastic personality instead of generic fortune-telling.
